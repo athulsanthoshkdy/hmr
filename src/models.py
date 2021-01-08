@@ -15,7 +15,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 from keras import initializers
 
@@ -35,7 +36,7 @@ def Encoder_resnet(x, is_training=True, weight_decay=0.001, reuse=False):
     - Shape vector: N x 10
     - variables: tf variables
     """
-    from tensorflow.contrib.slim.python.slim.nets import resnet_v2
+    from tf.contrib.slim.python.slim.nets import resnet_v2
     with tf.name_scope("Encoder_resnet", [x]):
         with slim.arg_scope(
                 resnet_v2.resnet_arg_scope(weight_decay=weight_decay)):
