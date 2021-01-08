@@ -17,7 +17,7 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-import tf.keras.initializers.VarianceScaling as variance_scaling_initializer
+from keras import initializers.VarianceScaling as variance_scaling_initializer
 
 
 def Encoder_resnet(x, is_training=True, weight_decay=0.001, reuse=False):
