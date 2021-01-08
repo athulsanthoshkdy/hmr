@@ -38,15 +38,8 @@ def Encoder_resnet(x, is_training=True, weight_decay=0.001, reuse=False):
     """
     
     with tf.name_scope("Encoder_resnet", values=[x]):
-        import tf_slim as slim
-        with slim.arg_scope(
-                resnet_v2.resnet_arg_scope(weight_decay=weight_decay)):
-            net, end_points = resnet_v2.resnet_v2_50(
-                x,
-                num_classes=None,
-                is_training=is_training,
-                reuse=reuse,
-                scope='resnet_v2_50')
+        with slim.arg_scope(resnet_v2.resnet_arg_scope(weight_decay=weight_decay)):
+            net, end_points = resnet_v2.resnet_v2_50(x,num_classes=None,is_training=is_training,reuse=reuse,scope='resnet_v2_50')
             net = tf.squeeze(net, axis=[1, 2])
     variables = tf.contrib.framework.get_variables('resnet_v2_50')
     return net, variables
