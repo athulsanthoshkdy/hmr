@@ -24,7 +24,8 @@ from absl import flags
 import numpy as np
 
 import skimage.io as io
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 from src.util import renderer as vis_util
 from src.util import image as img_util
