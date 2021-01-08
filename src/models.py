@@ -17,7 +17,7 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-from keras import initializers.VarianceScaling as variance_scaling_initializer
+from keras import initializers
 
 
 def Encoder_resnet(x, is_training=True, weight_decay=0.001, reuse=False):
@@ -77,7 +77,7 @@ def Encoder_fc3_dropout(x,
         net = slim.dropout(net, 0.5, is_training=is_training, scope='dropout1')
         net = slim.fully_connected(net, 1024, scope='fc2')
         net = slim.dropout(net, 0.5, is_training=is_training, scope='dropout2')
-        small_xavier = variance_scaling_initializer(
+        small_xavier = initializers.VarianceScaling(
             factor=.01, mode='FAN_AVG', uniform=True)
         net = slim.fully_connected(
             net,
