@@ -36,9 +36,7 @@ def Encoder_resnet(x, is_training=True, weight_decay=0.001, reuse=False):
     - Shape vector: N x 10
     - variables: tf variables
     """
-    import os
-    os.environ['PYTHONPATH']=os.environ['PYTHONPATH']+':/content/models/research/slim'
-    from tf.contrib.slim.python.slim.nets import resnet_v2
+    
     with tf.name_scope("Encoder_resnet", [x]):
         with slim.arg_scope(
                 resnet_v2.resnet_arg_scope(weight_decay=weight_decay)):
